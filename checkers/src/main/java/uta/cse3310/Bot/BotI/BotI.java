@@ -2,7 +2,8 @@ package uta.cse3310.Bot.BotI;
 
 import uta.cse3310.GameManager.GameManager;
 import java.util.ArrayList;
-
+//The pieces will displaying the colors to indicate if this is bot or user.
+//It may also display the flag status to validate the move
 class Pieces {
 };
 
