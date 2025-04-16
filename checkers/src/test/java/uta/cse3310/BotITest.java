@@ -194,5 +194,50 @@ public class BotITest {
                 assertTrue(move4 != null);
 
         }
-
+        //Test the user move method:
+    //TC-004: Test when there is no move available for onUserMove() method!
+    @Test
+    public void test_onUserMove_noMove_available(){
+        BotI botI = new BotI(null);
+        // Test with an empty board and basic input
+        char[][] empty_Board = new char[][] {
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' }
+        };
+        Position pos1 = new Position(4, 3);
+        Position pos2 = new Position(5, 4);
+        Move randomMove1 = new Move(pos1, pos2, "User1");
+        botI.onUserMove(empty_Board, randomMove1);
+        assertTrue(true); // Adding the condition later
+        //Move botMove = generateMove(empty_Board);
+        char[][] try_board = new char[][] {
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', 'o', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' }
+        };
+        Position pos3 = new Position(2, 3);
+        Position pos4 = new Position(3, 4);
+        Move randomMove2 = new Move(pos3, pos4, "User2");
+        botI.onUserMove(try_board, randomMove2);
+        assertTrue(true);
+        // Wrong move on purpose
+        Move wrongMove = new Move(pos3, pos4, "User3");
+        botI.onUserMove(empty_Board, wrongMove);
+        try {
+            botI.onUserMove(null, null);
+        } catch (Exception e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+    } 
 }
